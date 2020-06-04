@@ -13,3 +13,9 @@
 
 -   The concept of application state.
 -   A simple way of implementing state.
+
+### 16. Building the search view—part 1
+
+-   Advanced DOM manipulation techniques.
+-   How to use ES6 template strings to render entire HTML components.
+-   How to create a loading spinner.
