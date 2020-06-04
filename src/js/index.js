@@ -1,16 +1,6 @@
-import axios from 'axios';
-const key = '3805dd74823040bbbd3330813abef7ed';
+import Search from './models/Search';
 
-async function getRecipes(query) {
-    const url = 'https://api.spoonacular.com/recipes/search';
+const search = new Search('pizza');
+console.log(search);
 
-    try {
-        const response = await axios(`${url}?apiKey=${key}&query=${query}`);
-        let recipes = response.data.results;
-        console.log(recipes);
-    } catch (error) {
-        alert(error);
-    }
-}
-
-getRecipes('pizza');
+search.getResults().then(() => console.log(search.result));
