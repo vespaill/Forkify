@@ -12,13 +12,13 @@ export default class Search {
     async getResults(num = 10) {
         const url = 'https://api.spoonacular.com/recipes/complexSearch';
         const key = '3805dd74823040bbbd3330813abef7ed';
-        // https://api.spoonacular.com/recipes/search?apiKey=3805dd74823040bbbd3330813abef7ed&query=cheese
+
         try {
             const response = await axios(
                 `${url}?apiKey=${key}&query=${this.query}&addRecipeInformation=true&number=${num}`
             );
             this.result = response.data.results;
-            // console.log(this.result);
+            console.log(this.result);
         } catch (error) {
             console.log(error);
             alert(error);

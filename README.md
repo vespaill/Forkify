@@ -2,7 +2,7 @@
 
 ### 13. Making our first API calls
 
--   How to use a real-world API.
+-   How to use a real-world API (https://spoonacular.com/food-api/docs)
 -   What API keys are and why we need them.
 
 ### 14. Building the Search model
@@ -14,7 +14,7 @@
 -   The concept of application state.
 -   A simple way of implementing state.
 
-### 16. Building the search view—part 1
+### 16–17. Building the search view
 
 -   Advanced DOM manipulation techniques.
 -   How to use ES6 template strings to render entire HTML components.
