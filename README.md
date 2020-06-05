@@ -19,3 +19,5 @@
 -   Advanced DOM manipulation techniques.
 -   How to use ES6 template strings to render entire HTML components.
 -   How to create a loading spinner.
+
+### 18. Rendering an AJAX loading spinner
