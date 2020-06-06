@@ -9,7 +9,7 @@ export default class Search {
      * @param {*} addRecipeInformation If set to true, you get nutritional information about each recipes returned.
      * @param {*} num The number of expected results (between 1 and 100).
      */
-    async getResults(addRecipeInformation = true, num = 10) {
+    async getResults(addRecipeInformation = true, num = 30) {
         let url = 'https://api.spoonacular.com/recipes/complexSearch';
         const key = '3805dd74823040bbbd3330813abef7ed';
 

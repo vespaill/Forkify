@@ -1,15 +1,16 @@
-import $ from 'jquery'
+import $ from 'jquery';
 
 export const elements = {
     searchForm: $('.search'),
     searchInput: $('.search__field'),
     searchResults: $('.results'),
-    searchResultList: $('.results__list')
+    searchResultList: $('.results__list'),
+    searchResultPages: $('.results__pages')
 };
 
 export const elementStrings = {
     loader: 'loader'
-}
+};
 
 export const renderLoader = parent => {
     const loader = `
@@ -20,9 +21,9 @@ export const renderLoader = parent => {
         </div>
     `;
     $(parent).append(loader);
-}
+};
 
-export const removeLoader = () => {
-    const $loader =$(`.${elementStrings.loader}`);
+export const clearLoader = () => {
+    const $loader = $(`.${elementStrings.loader}`);
     if ($loader) $loader.remove();
-}
+};

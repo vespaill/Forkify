@@ -13,10 +13,11 @@ export const clearInput = () => {
 };
 
 /**
- * Removes all items in the search results list.
+ * Removes all lsit items and pagination buttons in the search results list.
  */
 export const clearResults = () => {
     elements.searchResultList.empty();
+    elements.searchResultPages.empty();
 };
 
 /**
@@ -68,9 +69,70 @@ const renderRecipe = recipe => {
 };
 
 /**
- * Renders a list of recipe items in the search-result list.
- * @param {*} recipes an array of recipe objects.
+ * Returns markup for a pagination button.
+ * @param {*} page Number of the current page.
+ * @param {*} type Type of button ('prev' | 'next')
  */
-export const renderResults = recipes => {
-    recipes.forEach(renderRecipe);
-};
+const createButton = (page, type) => {
+    let pageNumber, iconArrowDirection;
+    if (type === 'prev') {
+        pageNumber = page - 1;
+        iconArrowDirection = 'left';
+    } else if (type === 'next'){
+        pageNumber = page + 1;
+        iconArrowDirection = 'right';
+    }
+
+    return `
+        <button class="btn-inline results__btn--${type}" data-goto=${pageNumber}>
+            <span>Page ${pageNumber}</span>
+            <svg class="search__icon">
+                <use href="img/icons.svg#icon-triangle-${iconArrowDirection}"></use>
+            </svg>
+        </button>
+    `;
+}
+
+/**
+ * Renders pagination buttons.
+ * @param {*} page Number of the current page.
+ * @param {*} numResults Total number of results.
+ * @param {*} resultPerPage Number of results to display per page.
+ */
+const renderButtons = (page, numResults, resultPerPage) => {
+    const pages = Math.ceil(numResults / resultPerPage);
+    let button;
+
+    if (page === 1 && pages > 1) {
+        /* Only next-page button */
+        button = createButton(page, 'next');
+    } else if (page < pages) {
+        /* Both buttons */
+        button = `
+            ${createButton(page, 'prev')}
+            ${createButton(page, 'next')}
+        `;
+    } else if (page === pages && pages > 1) {
+        /* Only previous-page button */
+        button = createButton(page, 'prev');
+    }
+    elements.searchResultPages.append(button);
+}
+
+/**
+ * Renders a list of recipe items in the search-result list. The list is divided
+ * into navigable pages.
+ * @param {*} recipes Array of recipe objects.
+ * @param {*} page Number of the page we want to start at.
+ * @param {*} resultsPerPage Number of results to display per page.
+ */
+export const renderResults = (recipes, page = 1, resultsPerPage = 10) => {
+    /* Render results of current page */
+    const start = (page - 1) * resultsPerPage;
+    const end = page * resultsPerPage;
+
+    recipes.slice(start, end).forEach(renderRecipe);
+
+    /* Render pagination buttons */
+    renderButtons(page, recipes.length, resultsPerPage);
+}

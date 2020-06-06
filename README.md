@@ -21,3 +21,8 @@
 -   How to create a loading spinner.
 
 ### 18. Rendering an AJAX loading spinner
+
+### 19. Implementing search results pagination
+
+-   How to use the `.closest` method for easier event handling.
+-   How and why to use `data-*` attributes in HTML5.
