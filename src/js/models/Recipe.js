@@ -36,4 +36,12 @@ export default class Recipe {
     calcServings() {
         this.servings = 4;
     }
+
+    parseIngredients() {
+        this.ingredients = this.ingredients.map(element => ({
+                count: element.measures.metric.amount,
+                unit: element.measures.metric.unitShort,
+                ingredient: element.name
+        }));
+    }
 }

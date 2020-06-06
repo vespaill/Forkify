@@ -34,3 +34,8 @@
 -   How to read data from the page URL.
 -   How to respond to the `hashchange` event. This is an event that is triggered every time the current url changes.
 -   How to add the same event listener to multiple events.
+
+### 22. Building the recipe controller—part 2
+
+-   Use array methods like `map`, `slice`, `findIndex`, and `includes`.
+-   How and why to use `eval()`.
