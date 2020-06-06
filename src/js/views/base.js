@@ -5,7 +5,8 @@ export const elements = {
     searchInput: $('.search__field'),
     searchResults: $('.results'),
     searchResultList: $('.results__list'),
-    searchResultPages: $('.results__pages')
+    searchResultPages: $('.results__pages'),
+    window: $(window)
 };
 
 export const elementStrings = {

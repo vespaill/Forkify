@@ -12,7 +12,7 @@
 ### 15. Building the Search controller
 
 -   The concept of application state.
--   A simple way of implementing state.
+-   A simple way of implementing state with objects.
 
 ### 16–17. Building the search view
 
@@ -28,3 +28,9 @@
 -   How and why to use `data-*` attributes in HTML5.
 
 ### 20. Building the recipe model—part 1
+
+### 21. Building the recipe controller—part 1
+
+-   How to read data from the page URL.
+-   How to respond to the `hashchange` event. This is an event that is triggered every time the current url changes.
+-   How to add the same event listener to multiple events.
