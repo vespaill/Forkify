@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { key } from '../config'
 
 export default class Search {
     constructor(query) {
@@ -11,8 +12,6 @@ export default class Search {
      */
     async getResults(addRecipeInformation = true, num = 30) {
         let url = 'https://api.spoonacular.com/recipes/complexSearch';
-        const key = '3805dd74823040bbbd3330813abef7ed';
-
         url += `?apiKey=${key}`;
         url += `&query=${this.query}`;
         url += `&addRecipeInformation=${addRecipeInformation}`;

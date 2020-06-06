@@ -1,4 +1,5 @@
 import Search from './models/Search';
+import Recipe from './models/Recipe';
 import * as searchView from './views/searchView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
@@ -12,7 +13,7 @@ import { elements, renderLoader, clearLoader } from './views/base';
 const state = {};
 
 /**
- * Get input query from UI, make an API call, and render the results on UI.
+ * Gets input query from UI, makes an API call, and renders the results on UI.
  */
 const controlSearch = async () => {
     // 1) Get query from view
@@ -57,4 +58,8 @@ elements.searchResultPages.on('click', e => {
     }
 });
 
+/* TESTING */
+const r = new Recipe(716429);
+r.getRecipe();
+console.log(r);
 
