@@ -51,3 +51,7 @@
 
 -   Using `fraction.js` to format numbers into fraction strings.
 -   Highlighting selected items in the search results list.
+
+### 25. Updating recipe servings
+
+-   Another way of implementing event delegation using the `.matches` method.

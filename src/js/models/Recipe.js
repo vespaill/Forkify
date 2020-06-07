@@ -84,4 +84,19 @@ export default class Recipe {
             };
         });
     }
+
+    /**
+     * @param {*} type A string to decide how to update serving. 'inc' | 'dec'
+     */
+    updateServings(type) {
+        /* Servings */
+        const newServings = type === 'dec' ? this.servings - 1 : this.servings + 1;
+
+        /* Update ingredient quantities */
+        this.ingredients.forEach(ingredient => {
+            ingredient.count *= newServings / this.servings;
+        });
+
+        this.servings = newServings;
+    }
 }

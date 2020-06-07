@@ -1,5 +1,6 @@
 import { elements } from './base';
 import { Fraction } from 'fractional';
+import $ from 'jquery';
 
 export const clearRecipe = () => {
     elements.recipe.empty();
@@ -64,12 +65,12 @@ export const renderRecipe = recipe => {
                 <span class="recipe__info-text"> servings</span>
 
                 <div class="recipe__info-buttons">
-                    <button class="btn-tiny">
+                    <button class="btn-tiny btn-decrease">
                         <svg>
                             <use href="img/icons.svg#icon-circle-with-minus"></use>
                         </svg>
                     </button>
-                    <button class="btn-tiny">
+                    <button class="btn-tiny btn-increase">
                         <svg>
                             <use href="img/icons.svg#icon-circle-with-plus"></use>
                         </svg>
@@ -112,4 +113,14 @@ export const renderRecipe = recipe => {
         </div>
     `;
     elements.recipe.prepend(markup);
+};
+
+export const updateServingsIngredients = recipe => {
+    /* Update servings */
+    $('.recipe__info-data--people').text(recipe.servings);
+
+    /* Update Ingredients */
+    $('.recipe__count').each(function(i) {
+        $(this).text(formatCount(recipe.ingredients[i].count));
+    });
 };
