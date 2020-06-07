@@ -2,7 +2,7 @@
 
 ### 13. Making our first API calls
 
--   How to use a real-world API like [spoonacular](https://spoonacular.com/food-api/docs).
+-   How to use a real-world API (https://spoonacular.com/food-api/docs)
 -   What API keys are and why we need them.
 
 ### 14. Building the Search model
@@ -14,11 +14,13 @@
 -   The concept of application state.
 -   A simple way of implementing state with objects.
 
-### 16–18. Building the search view
+### 16–17. Building the search view
 
 -   Advanced DOM manipulation techniques.
 -   How to use ES6 template strings to render entire HTML components.
--   How to create and render an AJAX loading spinner.
+-   How to create a loading spinner.
+
+### 18. Rendering an AJAX loading spinner
 
 ### 19. Implementing search results pagination
 
@@ -27,12 +29,12 @@
 
 ### 20. Building the recipe model
 
--   Retrieving recipe data from the [spoonacular](https://spoonacular.com/food-api/docs) API and storing it in a Recipe object.
+-   Retrieving recipe data from the _spoonacular_ API and storing it in a Recipe object.
 
 ### 21. Building the recipe controller—part 1
 
 -   How to read data from the page URL.
--   How to respond to the `hashchange` event. This is an event that is triggered every time the current URL changes.
+-   How to respond to the `hashchange` event. This is an event that is triggered every time the current url changes.
 -   How to add the same event listener to multiple events.
 
 ### 22. Building the recipe controller—part 2
@@ -53,9 +55,3 @@
 ### 25. Updating recipe servings
 
 -   Another way of implementing event delegation using the `.matches` method.
-
-### 26. Building the shopping list model
-
--   How and why to create unique IDs using an external package.
--   Difference between `Array.slice` and `Array.splice`.
--   Most use cases for `Array.findIndex` and `Array.find`.
