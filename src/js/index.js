@@ -1,9 +1,9 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
+import List from './models/List';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import { elements, renderLoader, clearLoader } from './views/base';
-import $ from 'jquery';
 
 /**
  * Global state of the app
@@ -101,7 +101,7 @@ const controlRecipe = async () => {
             /* Render the recipe */
             clearLoader();
             recipeView.renderRecipe(state.recipe);
-            console.log(state.recipe);
+            // console.log(state.recipe);
         } catch (error) {
             alert('Error processing recipe');
         }
@@ -131,3 +131,5 @@ elements.recipe.on('click', e => {
     }
     // console.log('servings', state.recipe.servings);
 });
+
+window.l = new List();

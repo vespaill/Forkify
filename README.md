@@ -55,3 +55,9 @@
 ### 25. Updating recipe servings
 
 -   Another way of implementing event delegation using the `.matches` method.
+
+### 26. Building the shopping list model
+
+-   How and why to create unique IDs using an external package.
+-   Difference between `Array.slice` and `Array.splice`.
+-   More use cases for `Array.findIndex` and `Array.find`.

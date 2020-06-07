@@ -20,7 +20,7 @@ export default class Search {
         try {
             const response = await axios(url);
             this.result = response.data.results;
-            console.log(this.result);
+            // console.log(this.result);
         } catch (error) {
             console.log(error);
             alert(error);
