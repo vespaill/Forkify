@@ -63,3 +63,5 @@
 -   More use cases for `Array.findIndex` and `Array.find`.
 
 ### 27. Building the shopping list view
+
+### 28. Building the shopping list controller
