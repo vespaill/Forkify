@@ -7,7 +7,8 @@ export const elements = {
     searchResults: $('.results'),
     searchResultList: $('.results__list'),
     searchResultPages: $('.results__pages'),
-    recipe: $('.recipe')
+    recipe: $('.recipe'),
+    shopping: $('.shopping__list')
 };
 
 export const elementStrings = {

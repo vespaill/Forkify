@@ -61,3 +61,5 @@
 -   How and why to create unique IDs using an external package.
 -   Difference between `Array.slice` and `Array.splice`.
 -   More use cases for `Array.findIndex` and `Array.find`.
+
+### 27. Building the shopping list view
