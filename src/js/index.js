@@ -1,8 +1,8 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 import { elements, renderLoader, clearLoader } from './views/base';
-import $ from 'jquery';
 
 /**
  * Global state of the app
@@ -19,6 +19,7 @@ const state = {
 };
 
 /**
+ * SEARCH CONTROLLER
  * Gets input query from UI, makes an API call, and renders the results on UI.
  */
 const controlSearch = async () => {
@@ -70,7 +71,7 @@ elements.searchResultPages.on('click', e => {
 });
 
 /**
- *
+ * RECIPE CONTROLLER
  */
 const controlRecipe = async () => {
     const id = window.location.hash.replace('#', '');
@@ -78,6 +79,8 @@ const controlRecipe = async () => {
 
     if (id) {
         /* Prepare the UI for changes */
+        recipeView.clearRecipe();
+        renderLoader(elements.recipe);
 
         /* Create new recipe object */
         state.recipe = new Recipe(id);
@@ -92,7 +95,8 @@ const controlRecipe = async () => {
             state.recipe.calcTime();
 
             /* Render the recipe */
-            console.log(state.recipe);
+            clearLoader();
+            recipeView.renderRecipe(state.recipe);
         } catch (error) {
             alert('Error processing recipe');
         }

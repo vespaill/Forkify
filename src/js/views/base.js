@@ -1,12 +1,13 @@
 import $ from 'jquery';
 
 export const elements = {
+    window: $(window),
     searchForm: $('.search'),
     searchInput: $('.search__field'),
     searchResults: $('.results'),
     searchResultList: $('.results__list'),
     searchResultPages: $('.results__pages'),
-    window: $(window)
+    recipe: $('.recipe')
 };
 
 export const elementStrings = {
@@ -21,7 +22,7 @@ export const renderLoader = parent => {
             </svg>
         </div>
     `;
-    $(parent).append(loader);
+    $(parent).prepend(loader);
 };
 
 export const clearLoader = () => {

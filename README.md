@@ -27,7 +27,7 @@
 -   How to use the `.closest` method for easier event handling.
 -   How and why to use `data-*` attributes in HTML5.
 
-### 20. Building the recipe model—part 1
+### 20. Building the recipe model
 
 ### 21. Building the recipe controller—part 1
 
@@ -39,3 +39,5 @@
 
 -   Use array methods like `map`, `slice`, `findIndex`, and `includes`.
 -   How and why to use `eval()`.
+
+### 23. Building the recipe view—part 1

@@ -1,6 +1,36 @@
 import axios from 'axios'
 import { key } from '../config'
 
+const normalizeUnit = unit => {
+    unit = unit.toLowerCase();
+    switch (unit) {
+        case 'ounce':
+        case 'ounces':
+            return 'oz'
+        case 'milliliter':
+        case 'milliliters':
+            return 'ml';
+        case 'cups':
+            return 'cup';
+        case 'gram':
+        case 'grams':
+            return 'g';
+        case 'kilogram':
+        case 'kilograms':
+            return 'kg';
+        case 'tbsps':
+        case 'tablespoon':
+        case 'tablespoons':
+            return 'tbsp';
+        case 'tsps':
+        case 'teaspoon':
+        case 'teaspoons':
+            return 'tsp';
+        default:
+            return unit;
+    }
+}
+
 export default class Recipe {
     constructor(id) {
         this.id = id;
@@ -38,10 +68,20 @@ export default class Recipe {
     }
 
     parseIngredients() {
-        this.ingredients = this.ingredients.map(element => ({
-                count: element.measures.metric.amount,
-                unit: element.measures.metric.unitShort,
+        this.ingredients = this.ingredients.map(element => {
+            let count = element.measures.metric.amount;
+            let unit = element.measures.metric.unitShort;
+
+            unit = normalizeUnit(unit);
+
+            if (unit === 'ml' || unit === 'g' || unit === 'kg')
+                count = Math.ceil(count)
+
+            return {
+                count,
+                unit,
                 ingredient: element.name
-        }));
+            };
+        });
     }
 }
