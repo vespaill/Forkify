@@ -29,6 +29,8 @@
 
 ### 20. Building the recipe model
 
+-   Retrieving recipe data from the _spoonacular_ API and storing it in a Recipe object.
+
 ### 21. Building the recipe controller—part 1
 
 -   How to read data from the page URL.
@@ -41,3 +43,11 @@
 -   How and why to use `eval()`.
 
 ### 23. Building the recipe view—part 1
+
+-   Parsing recipe ingredients and normalizing their measurement units.
+-   Writing HTML markup to render recipes.
+
+### 24. Building the recipe view—part 2
+
+-   Using `fraction.js` to format numbers into fraction strings.
+-   Highlighting selected items in the search results list.

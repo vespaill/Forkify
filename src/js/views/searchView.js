@@ -1,4 +1,5 @@
 import { elements } from './base';
+import $ from 'jquery';
 
 /**
  * Gets the current value in the search field input.
@@ -19,6 +20,11 @@ export const clearResults = () => {
     elements.searchResultList.empty();
     elements.searchResultPages.empty();
 };
+
+export const highlightSelected = id => {
+    $('.results__link').removeClass('results__link--active');
+    $(`a[href="#${id}"]`).addClass('results__link--active');
+}
 
 /**
  * Returns a truncated version of a string by cutting off words at the end in
