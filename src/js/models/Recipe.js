@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { key } from '../config'
+import Likes from './Likes';
 
 const normalizeUnit = unit => {
     unit = unit.toLowerCase();
@@ -86,7 +87,7 @@ export default class Recipe {
     }
 
     /**
-     * @param {*} type A string to decide how to update serving. 'inc' | 'dec'
+     * @param {('inc' | 'dec')} type A string to decide how to update serving.
      */
     updateServings(type) {
         /* Servings */

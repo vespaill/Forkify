@@ -16,14 +16,14 @@ export const elementStrings = {
 };
 
 export const renderLoader = parent => {
-    const loader = `
+    const markup = `
         <div class="${elementStrings.loader}">
             <svg>
                 <use href="img/icons.svg#icon-cw"></use>
             </svg>
         </div>
     `;
-    $(parent).prepend(loader);
+    $(parent).prepend(markup);
 };
 
 export const clearLoader = () => {

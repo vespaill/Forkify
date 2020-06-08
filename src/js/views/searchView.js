@@ -14,7 +14,7 @@ export const clearInput = () => {
 };
 
 /**
- * Removes all lsit items and pagination buttons in the search results list.
+ * Removes all list items and pagination buttons in the search results list.
  */
 export const clearResults = () => {
     elements.searchResultList.empty();
@@ -29,9 +29,8 @@ export const highlightSelected = id => {
 /**
  * Returns a truncated version of a string by cutting off words at the end in
  * order to satisfy a length limit.
- * @param {*} title A string to truncate.
- * @param {*} limit A number to use as the limit of characters that title is
- * allowed to have.
+ * @param {String} title A string to truncate.
+ * @param {Number} limit Maximum number of characters title is allowed to have.
  */
 const limitRecipeTitle = (title, limit = 17) => {
     /* title string does not exceed length limit, simply return it. */
@@ -54,8 +53,11 @@ const limitRecipeTitle = (title, limit = 17) => {
 /**
  * Creates an 'li' HTML element, populated with data from a recipe object, and
  * appends it to the search-result list.
- * @param {*} recipe An object containing an id number, an image url string, a
- * title string and creditsText string.
+ * @param {Object} recipe Recipe to render.
+ * @param {String} recipe.id Unique identifier for the recipe.
+ * @param {String} recipe.image URL of the recipe's image.
+ * @param {String} recipe.title Title of the recipe.
+ * @param {String} recipe.creditsText Author of the recipe.
  */
 const renderRecipe = recipe => {
     const markup = `
@@ -76,8 +78,8 @@ const renderRecipe = recipe => {
 
 /**
  * Returns markup for a pagination button.
- * @param {*} page Number of the current page.
- * @param {*} type Type of button ('prev' | 'next')
+ * @param {Number} page Current page.
+ * @param {('prev' | 'next')} type Type of button .
  */
 const createButton = (page, type) => {
     let pageNumber, iconArrowDirection;
@@ -101,9 +103,9 @@ const createButton = (page, type) => {
 
 /**
  * Renders pagination buttons.
- * @param {*} page Number of the current page.
- * @param {*} numResults Total number of results.
- * @param {*} resultPerPage Number of results to display per page.
+ * @param {Number} page Current page.
+ * @param {Number} numResults Total number of results.
+ * @param {Number} resultPerPage Number of results to display per page.
  */
 const renderButtons = (page, numResults, resultPerPage) => {
     const pages = Math.ceil(numResults / resultPerPage);
@@ -128,9 +130,13 @@ const renderButtons = (page, numResults, resultPerPage) => {
 /**
  * Renders a list of recipe items in the search-result list. The list is divided
  * into navigable pages.
- * @param {*} recipes Array of recipe objects.
- * @param {*} page Number of the page we want to start at.
- * @param {*} resultsPerPage Number of results to display per page.
+ * @param {Object[]} recipes List of recipes to render.
+ * @param {String} recipes[].id Unique identifier for the recipe.
+ * @param {String} recipes[].image URL of the recipe's image.
+ * @param {String} recipes[].title Title of the recipe.
+ * @param {String} recipes[].creditsText Author of the recipe.
+ * @param {Number} page Number of the page we want to start at.
+ * @param {Number} resultsPerPage Number of results to display per page.
  */
 export const renderResults = (recipes, page = 1, resultsPerPage = 10) => {
     /* Render results of current page */
