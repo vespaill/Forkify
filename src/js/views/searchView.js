@@ -23,7 +23,9 @@ export const clearResults = () => {
 
 export const highlightSelected = id => {
     $('.results__link').removeClass('results__link--active');
-    $(`a[href="#${id}"]`).addClass('results__link--active');
+
+    /* Attribute Contains Selector [name*="value"] */
+    $(`.results__link[href*="#${id}"]`).addClass('results__link--active');
 }
 
 /**
@@ -32,7 +34,7 @@ export const highlightSelected = id => {
  * @param {String} title A string to truncate.
  * @param {Number} limit Maximum number of characters title is allowed to have.
  */
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
     /* title string does not exceed length limit, simply return it. */
     if (title.length <= limit)
         return title;

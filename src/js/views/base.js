@@ -8,7 +8,9 @@ export const elements = {
     searchResultList: $('.results__list'),
     searchResultPages: $('.results__pages'),
     recipe: $('.recipe'),
-    shopping: $('.shopping__list')
+    shopping: $('.shopping__list'),
+    likesMenu: $('.likes__field'),
+    likesList: $('.likes__list')
 };
 
 export const elementStrings = {

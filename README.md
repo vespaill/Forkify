@@ -73,3 +73,4 @@
 
 ### 29. Building the Likes model
 ### 30. Building the Likes controller
+### 31. Building the Likes view
