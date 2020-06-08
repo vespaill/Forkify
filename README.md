@@ -74,3 +74,8 @@
 ### 29. Building the Likes model
 ### 30. Building the Likes controller
 ### 31. Building the Likes view
+
+### 32. Implementing persistent data with localStorage
+
+-   How to use the `localStorage` API.
+-   How to set, get and delete from local storage.
