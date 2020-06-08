@@ -7,7 +7,7 @@ export default class Search {
     }
 
     /**
-     * @param {boolean} addRecipeInformation If set to true, you get nutritional
+     * @param {Boolean} addRecipeInformation If set to true, you get nutritional
      * information about each recipes returned.
      * @param {Number} num The number of expected results (between 1 and 100).
      */
@@ -21,17 +21,9 @@ export default class Search {
         try {
             const response = await axios(url);
             this.result = response.data.results;
-            // console.log(this.result);
         } catch (error) {
             console.log(error);
             alert(error);
         }
     }
-
-    // async function getRecipeById(id) {
-    //     const url = 'https://api.spoonacular.com/recipes';
-    //     const response = await axios(
-    //         `${url}/${id}/ingredientWidget.json?apiKey=${key}`
-    //     );
-    // }
 }

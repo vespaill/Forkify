@@ -1,5 +1,8 @@
 import $ from 'jquery';
 
+/**
+ * Storage of JQuery HTMLElements.
+ */
 export const elements = {
     window: $(window),
     searchForm: $('.search'),
@@ -17,7 +20,11 @@ export const elementStrings = {
     loader: 'loader'
 };
 
-export const renderLoader = parent => {
+/**
+ * Renders a loader icon as a child of the given parent element.
+ * @param {JQuery<HTMLElement>} parent
+ */
+export const renderLoader = $parent => {
     const markup = `
         <div class="${elementStrings.loader}">
             <svg>
@@ -25,9 +32,12 @@ export const renderLoader = parent => {
             </svg>
         </div>
     `;
-    $(parent).prepend(markup);
+    $parent.prepend(markup);
 };
 
+/**
+ * Removes the loader icon from the UI.
+ */
 export const clearLoader = () => {
     const $loader = $(`.${elementStrings.loader}`);
     if ($loader) $loader.remove();

@@ -1,5 +1,13 @@
 ## Learning Goals
 
+### 1–12. Project overview & setup
+
+-   Nodejs, npm
+-   **[Webpack](https://webpack.js.org/)**: [webpack](https://www.npmjs.com/package/webpack), [webpack-cli](https://www.npmjs.com/package/webpack-cli), [webpack dev server](https://webpack.js.org/configuration/dev-server/), [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin)
+-   **[Babel](https://babeljs.io/)**: [@babel/core](https://www.npmjs.com/package/@babel/core), [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env), [babel-loader](https://www.npmjs.com/package/babel-loader)
+-   MVC architecture
+-   ES6 modules
+
 ### 13. Making our first API calls
 
 -   How to use a real-world API like [spoonacular](https://spoonacular.com/food-api/docs).
@@ -58,7 +66,7 @@
 
 ### 26. Building the Shopping List model
 
--   How and why to create unique IDs using an external package.
+-   How and why to create unique IDs using an external package like [uniqid](https://www.npmjs.com/package/uniqid).
 -   Difference between `Array.slice` and `Array.splice`.
 -   More use cases for `Array.findIndex` and `Array.find`.
 
@@ -79,3 +87,16 @@
 
 -   How to use the `localStorage` API.
 -   How to set, get and delete from local storage.
+
+### 33. Wrapping up & final considerations
+
+-   Fix occasional bug concerning update of servings. Fractions for ingredient counts tend to get too long, so round them.
+
+### Making the project even better
+
+-   Implement button to delete all shopping list items.
+-   Implement functionality to manually add items to shopping list.
+-   Save shopping list data in local storage.
+-   Improve the ingredient parsing algorithm.
+-   Come up with an algorithm for calculating the amount of servings.
+-   Improve error handling.

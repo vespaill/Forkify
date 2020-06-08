@@ -40,14 +40,24 @@ export default class Likes {
         return this.likes.findIndex(el => el.id === id) !== -1;
     }
 
+    /**
+     * this.likes.length
+     */
     get numLikes() {
         return this.likes.length;
     }
 
+    /**
+     * Saves the list of liked recipes in localStorage as a JSON string called
+     * 'likes'
+     */
     persistData() {
         localStorage.setItem('likes', JSON.stringify(this.likes));
     }
 
+    /**
+     * Retrieves any liked recipes that were previously stored in localStorage.
+     */
     readStorage() {
         const storage = JSON.parse(localStorage.getItem('likes'));
 

@@ -3,7 +3,8 @@ import $ from 'jquery';
 import { limitRecipeTitle } from './searchView';
 
 /**
- *
+ * Toggles the icon in the like button between either a whole heart or just the
+ * outline of a heart.
  * @param {Boolean} isLiked Whether the current recipe is liked or not.
  */
 export const toggleLikeBtn = isLiked => {
@@ -12,12 +13,17 @@ export const toggleLikeBtn = isLiked => {
     $('.recipe__love use').attr('href', `img/icons.svg#${iconString}`);
 };
 
+/**
+ * Hides the Likes Menu if there are no liked recipes. Otherwise, makes the
+ * Likes Menu visible.
+ * @param {Number} numLikes Total currently liked recipes.
+ */
 export const toggleLikeMenu = numLikes => {
     elements.likesMenu.css('visibility', numLikes > 0? 'visible' : 'hidden');
 };
 
 /**
- * Renders a liked recipe.
+ * Renders a new liked recipe on the Likes list in the UI.
  * @param {Object} like like recipe to render.
  * @param {String} like.id Unique identifier for the liked recipe to render.
  * @param {String} like.image image URL for the liked recipe.
@@ -42,8 +48,8 @@ export const renderLike = like => {
 };
 
 /**
- *
- * @param {String} id Unique identifier for the liked recipe to remove from UI.
+ * Removes a liked recipe from the Likes list in the UI.
+ * @param {String} id Unique identifier for the liked recipe to remove.
  */
 export const deleteLike = id => {
     /* Attribute Contains Selector [name*="value"] */

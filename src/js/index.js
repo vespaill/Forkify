@@ -16,11 +16,11 @@ import { elements, renderLoader, clearLoader } from './views/base';
  * - Liked recipes
  */
 const state = {};
-window.state = state;
 
 /**
  * SEARCH CONTROLLER
- * Gets input query from UI, makes an API call, and renders the results on UI.
+ * Gets an input query from the UI, uses the query to fetch recipes from an API,
+ * and renders the matching results on the UI.
  */
 const controlSearch = async () => {
     // 1) Get query from view
@@ -50,7 +50,7 @@ const controlSearch = async () => {
 }
 
 /**
- * Call search controller on form submittion.
+ * Call search controller on form submission.
  */
 elements.searchForm.on('submit', e => {
     e.preventDefault();
@@ -72,10 +72,11 @@ elements.searchResultPages.on('click', e => {
 
 /**
  * RECIPE CONTROLLER
+ * Gets a recipe id from the window hash, uses the id to fetch data from an API
+ * for a that particular recipe, and renders the recipe details on the UI.
  */
 const controlRecipe = async () => {
     const id = window.location.hash.replace('#', '');
-    // console.log('recipe id:', id);
 
     if (id) {
         /* Prepare the UI for changes */
@@ -103,7 +104,6 @@ const controlRecipe = async () => {
                 state.recipe,
                 state.likes.isLiked(id)
             );
-            // console.log(state.recipe);
         } catch (error) {
             alert('Error processing recipe');
         }
@@ -111,7 +111,7 @@ const controlRecipe = async () => {
 };
 
 /**
- * Same event handler 'controlRecipe' will be used for multiple triggers:
+ * Use the same event handler 'controlRecipe' for multiple triggers:
  * 'hashchange' and 'load'
  */
 ['hashchange', 'load'].forEach(event =>
@@ -120,12 +120,14 @@ const controlRecipe = async () => {
 
 /**
  * LIST CONTROLLER
+ * Takes the ingredients from the current state recipe and renders them on
+ * a seperate list in the UI.
  */
 const controlList = () => {
     /* Create a new list IF there is none yet. */
     if (!state.list) state.list = new List();
 
-    /* Add each ingredient to state's list and render on UI. */
+    /* Add each ingredient to the state's list and render the list on UI. */
     state.recipe.ingredients.forEach(el => {
         const item = state.list.addItem(el.count, el.unit, el.ingredient);
         listView.renderItem(item);
@@ -133,20 +135,20 @@ const controlList = () => {
 };
 
 /**
- * Handle delete and update list item events.
+ * Handle deleting and updating list item events.
  */
 elements.shopping.on('click', e => {
     const id = e.target.closest('.shopping__item').dataset.itemid;
 
-    /* Handle the detele button */
+    /* Handle the detele button. */
     if (e.target.matches('.shopping__delete, .shopping__delete *')) {
-        /* Delete from state */
+        /* Delete from state. */
         state.list.deleteItem(id);
 
-        /* Delete from UI */
+        /* Delete from UI. */
         listView.deleteItem(id);
 
-    /* Handle the count update */
+    /* Handle the count update. */
     } else if (e.target.matches('.shopping__count-value')) {
         const val = parseFloat(e.target.value);
         state.list.updateCount(id, val);
@@ -155,13 +157,16 @@ elements.shopping.on('click', e => {
 
 /**
  * LIKE CONTROLLER
+ * Allows the user to like or unlike the current recipe. Liked recipes are
+ * stored in a list, making them easily accessible in the future. Unliking
+ * recipes deletes them from this list.
  */
 const controlLike = () => {
     if (!state.likes) state.likes = new Likes();
 
     const curID = state.recipe.id;
 
-    /* User has NOT yet liked current recipe. */
+    /* User has NOT yet liked the current recipe. */
     if (!state.likes.isLiked(curID)) {
 
         /* Add like to the state. */
@@ -177,9 +182,8 @@ const controlLike = () => {
 
         /* Add like to UI list. */
         likesView.renderLike(newLike);
-        console.log(state.likes);
 
-    /* User HAS liked current recipe. */
+    /* User HAS liked the current recipe. */
     } else {
 
         /* Remove like from the state. */
@@ -193,12 +197,10 @@ const controlLike = () => {
 
     }
     likesView.toggleLikeMenu(state.likes.numLikes);
-    console.log(state.likes.likes);
-
 };
 
 /**
- * Restore liked recipes on page load.
+ * Restore liked recipes from localStorage on page load.
  */
 elements.window.on('load', () => {
     state.likes = new Likes();
@@ -214,25 +216,29 @@ elements.window.on('load', () => {
 });
 
 /**
- * Handle recipe button clicks.
+ * Handle current recipe button clicks.
  */
 elements.recipe.on('click', e => {
+    /* Decrease servings button is clicked. */
     if (e.target.matches('.btn-decrease, .btn-decrease *')) {
-        /* Decrease button is clicked. */
+
+        /* Avoid negative servings. */
         if (state.recipe.servings > 1) {
             state.recipe.updateServings('dec');
             recipeView.updateServingsIngredients(state.recipe);
         }
+
+    /* Increase servings button is clicked. */
     } else if (e.target.matches('.btn-increase, .btn-increase *')) {
-        /* Increase button is clicked. */
         state.recipe.updateServings('inc');
         recipeView.updateServingsIngredients(state.recipe);
+
+    /* Add ingredients to shopping list button is clicked. */
     } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *')) {
-        /* Add ingredients to shopping list. */
         controlList();
+
+    /* Like (heart) recipe button is clicked. */
     } else if (e.target.matches('.recipe__love, .recipe__love *')) {
-        /* Like controller */
         controlLike();
     }
-    // console.log('servings', state.recipe.servings);
 });
